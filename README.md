@@ -66,11 +66,11 @@ Liste du matériel :
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
 
-Un schéma LTSpice du matériel est visible sur l'image ci-dessous :
+Un schéma LTSpice du matériel est visible sur l'image ci-dessous, qui est fidèle au circuit tel que fabriqué sur le PCB. Par la suite cependant, nous introduirons plusieurs manières différentes de représenter notre _flex sensor_, notamment afin de tester l'impact du bruit :
 
 ![image](https://user-images.githubusercontent.com/98756729/163603875-e34973cb-3e47-418e-a51d-7911591c59d2.png)
 
-La résistance {Rsensor} étant le _flex sensor_ et la résistance Rvar étant le potentiomètre digital, monté en série avec une résistance de 33 Ohms. 
+La résistance {Rsensor} étant le _flex sensor_ et la résistance Rvar étant le potentiomètre digital, monté en série avec une résistance de 33 Ohms. La sortie Vout est reliée à une entrée analogique du CAN du microcontroleur arduino, qui traitera la donnée analogique brute afin d'en extraire des informations. 
 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
