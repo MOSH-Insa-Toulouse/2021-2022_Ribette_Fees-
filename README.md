@@ -66,7 +66,12 @@ Liste du matériel :
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
 
-Un schéma LTSpice du matériel est visible sur l'image ci-dessous : 
+Un schéma LTSpice du matériel est visible sur l'image ci-dessous :
+
+![image](https://user-images.githubusercontent.com/98756729/163603875-e34973cb-3e47-418e-a51d-7911591c59d2.png)
+
+La résistance {Rsensor} étant le _flex sensor_ et la résistance Rvar étant le potentiomètre digital, monté en série avec une résistance de 33 Ohms. 
+
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
