@@ -49,11 +49,22 @@ Les résistances obtenues sur ces dimensions par l'équipe de chercheurs sont al
 | 2B | 2 MOhms     |  
 | HB | 20 MOhms |
 
-
-
-
+Notons que l'article soutient que les résistances supérieures à 20 MOhms n'ont pas pu etre mesurées par l'équipe (un multimètre a été utilisé). Nous proposons alors de fabriquer un circuit électronique permettant de mesurer la variation de résistance relative à la déformation, afin d'obtenir un _flex sensor_ low-tech, open source et _user-friendly_. 
 
 # 2. Circuit électronique <a class="anchor" id="Circuit_elec"></a>
+
+Le circuit électronique que nous avons utilisé est un montage amplificateur à transimpédance, à amplificateur opérationnel. Afin de garantir une facilité d'utilisation, nous avons également ajouté un module Bluetooth qui nous permet, via une application réalisé avec le _MIT App Inventor_ de communiquer avec un téléphone portable android. Nous avons également intégré un encodeur rotatoire, qui permet à l'utilisateur de faire des modifications en temps réel des actions du circuit, ainsi qu'un écran OLED qui affiche des informations utiles à l'utilisateur. Ce circuit électronique est monté sur PCB, soudé à la main par Mathis Ribette et Antoine Fées. 
+
+Liste du matériel : 
+
+| Fonction     | Référence| 
+| ------------- |:-------------:| 
+| Amplificateur opérationnel à faible bruit     | LTC 1050 | 
+| Module Bluetooth     | HC05    | 
+| Module encodeur rotatoire  | GT055     |  
+| Résistances | 270k, 100k, 10k, ...|
+| Capacités | 100pF, 10uF ...|
+
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
