@@ -18,7 +18,9 @@ Projet capteur INSA Toulouse 2021-2022
 
 # 1. A propos du projet <a class="anchor" id="A_propos"></a>
 
-Ce répertoire comporte les différentes étapes effectuées pour le projet de l'UF "Du capteur au banc de test en open source hardware" proposé en 4ème année de Génie Physique de l'INSA Toulouse. 
+Ce répertoire comporte les différentes étapes effectuées pour le projet de l'UF "Du capteur au banc de test en open source hardware" proposé en 4ème année de Génie Physique de l'INSA Toulouse. Ce travail a été effectué par Antoine Fées et Mathis Ribette, sous la direction de M. Jérémie Grisolia, et avec l'aide de M. Biganzoli et Mme Crouzet, de l'INSA Toulouse. 
+Les prémices de ce travail viennent d'un article scientifique, dans lequel des ingénieurs fabriquent un capteur de déformation à base d'une feuille de papier et d'un crayon à papier, avec une mine en graphite. Le système granulaire que composent les particules de graphite étalées sur une feuille de papier par un crayon se comporte d'une manière intéressante : lorsque le papier est courbé, les particules de graphite se rapprochent ou s'éloignent, induisant une diminution ou une augmentation de la résistivité globale du "circuit électrique" ainsi créé. 
+La grande difficulté vient de la résistivité de ce système, particulièrement élevée. Bien que le graphite massif est un très bon conducteur, lorsqu'il est mélangé avec des molécules liantes afin qu'il soit étalable sur une feuille de papier sous une simple pression de la main, sa résistivité augmente fortement. Les crayons dans le commerce, des XB aux XH en passant par le standard HB, B pour les plus gras (bold) et H pour les plus durs (hard), avec X le niveau de gras ou de dureté associé (un 4B sera plus gras qu'un 2B et un 4H plus dur qu'un 2H), seront ceux que nous utiliserons. 
 
 # 2. Circuit électronique <a class="anchor" id="Circuit_elec"></a>
 
