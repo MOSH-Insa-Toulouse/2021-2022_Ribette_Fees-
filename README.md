@@ -36,6 +36,7 @@ Le mécanisme de rapprochement ou d'éloignement des différents grains du syst�
 
 
 ![image](https://user-images.githubusercontent.com/98756729/163599411-dad5cb92-1356-40c1-ab71-cd2118588d27.png)
+
 _Image ci-dessus : figure 3 de l'article : (a) A photograph showing the U-shaped pencil trace drawn on a paper beam functioning as a strain gauge. (b) Schematic drawing shows that the number of connected graphite particle chains varies depending on the types of deformation. (c–d) Photograph of the gauge deformed by a single finger in compression and tension, respectively._[1](https://www.nature.com/articles/srep03812)
 
 Les résistances obtenues sur ces dimensions par l'équipe de chercheurs sont alors les suivantes : 
