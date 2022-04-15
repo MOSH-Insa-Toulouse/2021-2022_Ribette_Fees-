@@ -31,7 +31,20 @@ Cette différence de composition chimique et donc de dureté, est mise en évide
 ![image](https://user-images.githubusercontent.com/98756729/163597035-770cc0d2-381f-472a-9c6a-e3c83dd24306.png)
 _Image ci-dessus : figure 2 de l'article : (a) EDS spectra of pencil leads correlating hardness with the fraction of carbon. Intensities of all of the spectra were normalized based on the carbon peak. (b–g) Optical microscopy images of traces drawn on the paper substrates from pencils of decreasing hardness._[1](https://www.nature.com/articles/srep03812)
 
+L'équipe de chercheurs a par la suite utilisé ces différents crayons et tracé des jauges de contraintes en forme de U sur des feuilles de papier. Ces jauges présentent une longueur de trait d'environ quelques centimètres pour une largeur de trait de quelques millimètres, comme le montre la figure 3 (a) de l'article ci-dessous. 
+Le mécanisme de rapprochement ou d'éloignement des différents grains du système granulaire y est également représenté, (b-c-d). 
+![image](https://user-images.githubusercontent.com/98756729/163599411-dad5cb92-1356-40c1-ab71-cd2118588d27.png)
+_Image ci-dessus : figure 3 de l'article : (a) A photograph showing the U-shaped pencil trace drawn on a paper beam functioning as a strain gauge. (b) Schematic drawing shows that the number of connected graphite particle chains varies depending on the types of deformation. (c–d) Photograph of the gauge deformed by a single finger in compression and tension, respectively._[1](https://www.nature.com/articles/srep03812)
 
+Les résistances obtenues sur ces dimensions par l'équipe de chercheurs sont alors les suivantes : 
+
+
+| Crayon utilisé      | Résistance obtenue| 
+| ------------- |:-------------:| 
+| 9B     | 200 kOhms | 
+| 6B     | 500 kOhms     | 
+| 2B | 2 MOhms     |  
+| HB | 20 MOhms |
 
 
 
