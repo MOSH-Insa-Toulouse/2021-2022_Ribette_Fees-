@@ -25,6 +25,13 @@ Les prémices de ce travail viennent d'un article scientifique,  _Pencil Drawn S
 
 
 La grande difficulté vient de la résistivité de ce système, particulièrement élevée. Lorsqu'il est mélangé avec des molécules liantes pour qu'il soit moins friable, sa résistivité augmente fortement. Les crayons dans le commerce, des XB aux XH en passant par le standard HB, B pour les plus gras (bold) et H pour les plus durs (hard), avec X le niveau de gras ou de dureté associé (un 4B sera plus gras qu'un 2B et un 4H plus dur qu'un 2H), seront ceux que nous utiliserons. Dans cette classification, les plus gras comportent le plus de graphite et les plus durs le plus de molécules liantes. 
+Cette différence de composition chimique et donc de dureté, est mise en évidence dans l'article par EDS _(energy dispersive spectroscopy)_, où les résultats suivants sont obtenus : 
+- Plus on se rapproche du 9H, plus la proportion de liant est élevée. Les principaux éléments sont alors métalliques (Mg, Al) ou pseudo-métalliques (Si), avec également une forte teneur en oxygène. 
+- A l'inverse, plus on se rapproche du 9B, plus la concentration en carbone augmente et plus celle des liants diminue.  
+![image](https://user-images.githubusercontent.com/98756729/163597035-770cc0d2-381f-472a-9c6a-e3c83dd24306.png)
+_Image représentant la figure 2 de l'article : (a) EDS spectra of pencil leads correlating hardness with the fraction of carbon. Intensities of all of the spectra were normalized based on the carbon peak. (b–g) Optical microscopy images of traces drawn on the paper substrates from pencils of decreasing hardness.
+
+
 
 
 
