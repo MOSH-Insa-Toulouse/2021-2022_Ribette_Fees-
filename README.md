@@ -18,7 +18,7 @@ Projet capteur INSA Toulouse 2021-2022
 
 # 1. A propos du projet <a class="anchor" id="A_propos"></a>
 
-Ce répertoire comporte les différents étapes effectués pour le projet de l'UF "Du capteur au banc de test en open source hardware" proposé en 4ème année de Génie Physique de l'INSA Toulouse. 
+Ce répertoire comporte les différentes étapes effectuées pour le projet de l'UF "Du capteur au banc de test en open source hardware" proposé en 4ème année de Génie Physique de l'INSA Toulouse. 
 
 # 2. Circuit électronique <a class="anchor" id="Circuit_elec"></a>
 
