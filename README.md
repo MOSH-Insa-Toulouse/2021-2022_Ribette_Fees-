@@ -71,6 +71,11 @@ Un schéma LTSpice du matériel est visible sur l'image ci-dessous, qui est fid�
 ![image](https://user-images.githubusercontent.com/98756729/163603875-e34973cb-3e47-418e-a51d-7911591c59d2.png)
 
 La résistance {Rsensor} étant le _flex sensor_ et la résistance Rvar étant le potentiomètre digital, monté en série avec une résistance de 33 Ohms. La sortie Vout est reliée à une entrée analogique du CAN du microcontroleur arduino, qui traitera la donnée analogique brute afin d'en extraire des informations. 
+Une analyse électrique du schéma précédent donne : 
+
+- V+ = E*(R1//C1)/(Rsens+R5+(R1//C1))
+- V- = Vout/(1+(R3//C4)/(R2+Rvar))
+- Vout = E(R1//C1)(1+(R3//C4)/(R2+Rvar))/(Rsens+R5+(R1//C1)
 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
