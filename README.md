@@ -74,8 +74,8 @@ La résistance {Rsensor} étant le _flex sensor_ et la résistance Rvar étant l
 Une analyse électrique du schéma précédent donne : 
 
 - V+ = E*(R1//C1)/(Rsens+R5+(R1//C1))
-- V- = Vout/(1+(R3//C4)/(R2+Rvar))
-- Vout = E(R1//C1)(1+(R3//C4)/(R2+Rvar))/(Rsens+R5+(R1//C1)
+- V- = Vout/(1+((R3//C4)+R6)/(R2+Rvar))
+- Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)
 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
