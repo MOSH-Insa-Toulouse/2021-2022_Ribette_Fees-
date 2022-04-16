@@ -53,7 +53,7 @@ Notons que l'article soutient que les résistances supérieures à 20 MOhms n'on
 
 # 2. Circuit électronique <a class="anchor" id="Circuit_elec"></a>
 
-Le circuit électronique que nous avons utilisé est un montage amplificateur à transimpédance, à amplificateur opérationnel. Afin de garantir une facilité d'utilisation, nous avons également ajouté un module Bluetooth qui nous permet, via une application réalisé avec le _MIT App Inventor_ de communiquer avec un téléphone portable android. Nous avons également intégré un encodeur rotatoire, qui permet à l'utilisateur de faire des modifications en temps réel des actions du circuit, ainsi qu'un écran OLED qui affiche des informations utiles à l'utilisateur. Ce circuit électronique est monté sur PCB, puis monté sur un microcontroleur Arduino UNO. 
+Le circuit électronique que nous avons utilisé est un montage amplificateur à transimpédance, à amplificateur opérationnel. Afin de garantir une facilité d'utilisation, nous avons également ajouté un module Bluetooth qui nous permet, via une application réalisé avec le _MIT App Inventor_ de communiquer avec un téléphone portable android. Un potentiomètre digital commandé en SPI, monté en mode rhéostat à la place d'une résistance, nous permet de modifier le gain de l'amplificateur en temps réel. Nous avons également intégré un encodeur rotatoire, qui permet à l'utilisateur de faire des modifications en temps réel des actions du circuit, ainsi qu'un écran OLED qui affiche des informations utiles à l'utilisateur. Ce circuit électronique est monté sur PCB, puis monté sur un microcontroleur Arduino UNO. 
 
 Liste du matériel : 
 
@@ -62,7 +62,8 @@ Liste du matériel :
 | Microcontroleur | Arduino UNO |
 | Amplificateur opérationnel à faible bruit     | LTC 1050 | 
 | Module Bluetooth     | HC05    | 
-| Module encodeur rotatoire  | GT055     |  
+| Module encodeur rotatoire  | GT055     | 
+| Potentiomètre digital | MCP |
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
 
@@ -76,6 +77,7 @@ Une analyse électrique du schéma précédent donne :
 - V+ = E*(R1//C1)/(Rsens+R5+(R1//C1))
 - V- = Vout/(1+((R3//C4)+R6)/(R2+Rvar))
 - Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)
+, où E=5V. 
 
 En utilisant la formule ci-dessus sur excel, on obtient : 
 
