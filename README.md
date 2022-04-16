@@ -86,14 +86,19 @@ Une analyse électrique du schéma précédent donne :
 , où E=5V. 
 
 On remarque que :
+
 • R5 en entrée protège l'ampli opérationnel contre les décharges électrostatiques, et
 forme avec C1 un filtre pour les bruits en tension
 • C1 et R1 forment un filtre pour le bruit en courant
 • R2 est adaptable avec le potentiomètre digital, pour changer le calibre
 • C4 et R3 forment un filtre actif
 • C2 et R6 forment le filtre de sortie
-• C3 filtre le bruit d'alimentation 
+• C3 filtre le bruit d'alimentation
+
 Dans notre cas, la seule modification permanente est l'ajout d'un potentiomètre digital dont la résistance varie entre 500 Ohms et 51800 Ohms environ, et le remplacement de R3 par une résistance plus élevée (270 kOhms) afin d'augmenter le gain possible par notre montage. En effet, comme nous l'avons vu avec la formule précedente, la tension de sortie est à peu près proportionnelle à 1+R3/Rvar et donc augmenter R3 nous permet d'augmenter le gain. Le potentiomètre digital est commandé sur 8 bits et donc peut prendre 256 valeurs de résistance régulièrement espacées, environ de 200 Ohms les unes des autres. Le milieu de cette plage de fonctionnement étant environ à 25 kOhms, nous avons décidé d'augmenter R3 afin d'avoir, en conditions "nominales" un gain d'environ 11. Rappelons que le gain conseillé était de 100. Il nous est possible d'arriver à cette valeur de gain, mais il faut pour cela imposer une résistance d'environ 2,7kOhms au potentiomètre digital, ce qui n'arrive qu'à environ le dixième de sa plage utilsable. Une solution, afin de toujours repousser les limites de ce gain, est d'augmenter la valeur de R3 et diminuer celle de Rvar, mais on se heuret à d'autre problèmes rencontrés lorsque les résistances sont très élevées.  
+
+
+Une autre solution, plus couteuse, serait d'adjoindre un étage amplificateur inverseur à la suite d'un amplificateur transimpédance : nous n'aurions pas besoin de résistances élevées. 
 
 Testons notre formule pour le gain. En utilisant la formule **Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)** sur excel, on obtient : 
 
@@ -109,6 +114,11 @@ Où les instructions données sont :
 - **.op**
 
 Ces instructions ordonnent au logiciel SPICE de calculer l'**operating point**, le point d'équilibre du circuit et sa valeur de tension de sortie associée. Nous remarquons les memes courbes que pour le calcul excel : la fonction de transfert écrite ci-dessus semble correcte. Au-delà de cela, on remarque que des valeurs précises de résistances imposées par le potentiomètre digital sont nécessaires pour garder la tension de sortie *Vout* dans une fourchette facilement utilisable par l'entrée analogique du microcontroleur arduino. Nous verrons plus tard qu'une solution de réglage automatique du gain a été mise en oeuvre et testée, et les résultats qu'elle produit. 
+Nous remarquons que les variations de tensions de sortie ne répondent pas linéairement aux variations de résistance du capteur. En particulier, deux problèmes se posent : 
+
+- Pour des résistances faibles et des gains forts, la tension de sortie dépasse rapidement les 5V et le capteur sature. Cet effet devient prégnant pour des résistances de valeurs faibles (inférieures au MOhm) et la résistance du potentiomètre digital faible également. Un réglage du potentiomètre digital à de très grandes valeurs de résistance permet de contourner ce problème en diminuant le gain. 
+- Pour des résistances de capteur élevées et des gains forts, on remarque un aplatissement de la courbe, *i.e.* une variation importante de résistance du capteur (une déformation importante) s'accompagnent de variation faibles de tension de sortie Vout. Cela pose un problème du à la mesurabilité d'une variation de tension, qui n'est pas assurée pour des variations faibles. Rappelons que le quantum de variation pour un microcontroleur Arduino UNO avec un *CAN* de 10bits est d'environ 5mV (5mV/2^10 = 4,88 mV). Des variations inférieures à 5mV ne sont donc pas mesurables, d'autant plus que du bruit apparait et augmente encore la difficulté de la mesure. 
+- Un troisème problème est celui de la précision du potentiomètre digital. Un bref calcul indique que 200 ohms d'écart entre deux valeurs de Rvar impose une différence de G = (1+(R3+R6)/(R2+Rvar)) de 0,09 environ à Rvar = 25k, et 8,09 environ à Rvar = 2,5k, soit respectivement 0,74% et 7,8% du gain. Cette différence n'est pas négligeable et doit etre prise en compte lors de la détermination de la mesure. En somme, on essaiera au maximum de se placer dans une zone où cette différence à le moins d'impact, donc à des gains plus faibles. 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
