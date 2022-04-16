@@ -82,10 +82,20 @@ Une analyse électrique du schéma précédent donne :
 
 - V+ = E*(R1//C1)/(Rsens+R5+(R1//C1))
 - V- = Vout/(1+((R3//C4)+R6)/(R2+Rvar))
-- Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)
+- **Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)**
 , où E=5V. 
 
-En utilisant la formule ci-dessus sur excel, on obtient : 
+On remarque que :
+• R5 en entrée protège l'ampli opérationnel contre les décharges électrostatiques, et
+forme avec C1 un filtre pour les bruits en tension
+• C1 et R1 forment un filtre pour le bruit en courant
+• R2 est adaptable avec le potentiomètre digital, pour changer le calibre
+• C4 et R3 forment un filtre actif
+• C2 et R6 forment le filtre de sortie
+• C3 filtre le bruit d'alimentation 
+Dans notre cas, la seule modification permanente est l'ajout d'un potentiomètre digital dont la résistance varie entre 500 Ohms et 51800 Ohms environ, et le remplacement de R3 par une résistance plus élevée (270 kOhms) afin d'augmenter le gain possible par notre montage. En effet, comme nous l'avons vu avec la formule précedente, la tension de sortie est à peu près proportionnelle à 1+R3/Rvar et donc augmenter R3 nous permet d'augmenter le gain. Le potentiomètre digital est commandé sur 8 bits et donc peut prendre 256 valeurs de résistance régulièrement espacées, environ de 200 Ohms les unes des autres. Le milieu de cette plage de fonctionnement étant environ à 25 kOhms, nous avons décidé d'augmenter R3 afin d'avoir, en conditions "nominales" un gain d'environ 11. Rappelons que le gain conseillé était de 100. Il nous est possible d'arriver à cette valeur de gain, mais il faut pour cela imposer une résistance d'environ 2,7kOhms au potentiomètre digital, ce qui n'arrive qu'à environ le dixième de sa plage utilsable. Une solution, afin de toujours repousser les limites de ce gain, est d'augmenter la valeur de R3 et diminuer celle de Rvar, mais on se heuret à d'autre problèmes rencontrés lorsque les résistances sont très élevées.  
+
+Testons notre formule pour le gain. En utilisant la formule **Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)** sur excel, on obtient : 
 
 ![image](https://user-images.githubusercontent.com/98756729/163655598-82f2908a-b775-4942-8c23-dc98f40e5833.png)
 
