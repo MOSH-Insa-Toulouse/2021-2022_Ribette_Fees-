@@ -120,8 +120,19 @@ Nous remarquons que les variations de tensions de sortie ne répondent pas liné
 - Pour des résistances de capteur élevées et des gains forts, on remarque un aplatissement de la courbe, *i.e.* une variation importante de résistance du capteur (une déformation importante) s'accompagne d'une variation faible de tension de sortie Vout. Cela pose un problème du à la mesurabilité d'une variation de tension, qui n'est pas assurée pour des variations faibles. Rappelons que le quantum de variation pour un microcontroleur Arduino UNO avec un *CAN* de 10bits est d'environ 5mV (5mV/2^10 = 4,88 mV). Des variations inférieures à 5mV ne sont donc pas mesurables, d'autant plus que du bruit apparait et augmente encore la difficulté de la mesure. 
 - Un troisème problème est celui de la précision du potentiomètre digital. Un bref calcul indique que 200 ohms d'écart entre deux valeurs de Rvar impose une différence de G = (1+(R3+R6)/(R2+Rvar)) de 0,09 environ à Rvar = 25k, et 8,09 environ à Rvar = 2,5k, soit respectivement 0,74% et 7,8% du gain. Cette différence n'est pas négligeable et doit etre prise en compte lors de la détermination de la mesure. En somme, on essaiera au maximum de se placer dans une zone où cette différence à le moins d'impact, donc à des gains plus faibles. 
 
-En somme, **plus la résistance du capteur augmente, plus ses variations deviennent difficiles à mesurer**. 
+1) Conditions nominales d'utilisation. 
 
+En somme, **plus la résistance du capteur augmente, plus ses variations deviennent difficiles à mesurer**. Ces éléments nous permettent de répondre à la première question, celle de tester les **conditions nominales** du capteur. 
+Afin de garantir une mesure plus ou moins précise, la condition nominale d'utilisation du capteur sera dans une plage de résistannces de **1 à 10 MOhms** environ. Au-delà, il deviendra impossible d'ajuster en temps réel la valeur du potentiomètre digital avec suffisamment de précision pour ne pas compromettre la mesure. Il sera donc nécessaire de fixer sa valeur. La limite sera alors les 5mV de quantum de variation détectable par l'Arduino, et évidemment, le bruit qui subsistera. 
+Un test empirique sur des résistances connues, de 1 et 10 MOhm, nous a permis de nous convaincre de la précision de la mesure, et de raisonnablement croire à la validité de cette plage de résistances. 
+
+2) Influence de l'*offset voltage* imposé par l'amplificateur LTC1050
+
+Une analyse sur Spice de l'offset existant imposé par l'amplifacteur LTC1050 permet d'estimer son effet. En agissant à tension différentielle nulle, l'amplificateur impose un offset qui se propage jusqu'à la tension Vout. Cet effet, implémenté sur Spice, nous permet de raisonner sur la viabilité du montage. 
+
+![Voffset_Capture](https://user-images.githubusercontent.com/98756729/163668570-4933808c-9583-4c84-95fb-2d2a5eb38e54.PNG)
+
+On remarque des tensions d'offset dépendant de la résistance variable Rvar. Ces tensions d'offset sont relativement importantes, de 100 à 200mV. 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
 # 4. Code Arduino <a class="anchor" id="Code"></a>
