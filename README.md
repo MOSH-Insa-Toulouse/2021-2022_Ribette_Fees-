@@ -63,7 +63,7 @@ Liste du matériel :
 | Amplificateur opérationnel à faible bruit     | LTC 1050 | 
 | Module Bluetooth     | HC05    | 
 | Module encodeur rotatoire  | GT055     | 
-| Potentiomètre digital | MCP |
+| Potentiomètre digital | MCP41050 |
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
 
@@ -83,7 +83,7 @@ En utilisant la formule ci-dessus sur excel, on obtient :
 
 ![image](https://user-images.githubusercontent.com/98756729/163655598-82f2908a-b775-4942-8c23-dc98f40e5833.png)
 
-De l'autre coté, une analyse effectuée de la meme manière avec le logiciel spice donne : 
+De l'autre coté, une analyse effectuée de la meme manière avec le logiciel spice donne la courbe ci-dessous, où on voit la tension de sortie Vout en fonction de la résistance du capteur pour différentes valeurs de résistance imposées par le potentiomètre digital. 
 
 ![image](https://user-images.githubusercontent.com/98756729/163655673-e3bae0f7-8292-4288-a0b7-24971c0b144c.png)
 
@@ -92,7 +92,7 @@ Où les instructions données sont :
 - **.step param Rsensor 1000k 20000k 1000k**
 - **.op**
 
-Nous remarquons les memes courbes : la fonction de transfert semble correcte. 
+Ces instructions ordonnent au logiciel SPICE de calculer l'**operating point**, le point d'équilibre du circuit et sa valeur de tension de sortie associée. Nous remarquons les memes courbes que pour le calcul excel : la fonction de transfert écrite ci-dessus semble correcte. Au-delà de cela, on remarque que des valeurs précises de résistances imposées par le potentiomètre digital sont nécessaires pour garder la tension de sortie *Vout* dans une fourchette facilement utilisable par l'entrée analogique du microcontroleur arduino. Nous verrons plus tard qu'une solution de réglage automatique du gain a été mise en oeuvre et testée, et les résultats qu'elle produit. 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
