@@ -67,6 +67,12 @@ Liste du matériel :
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
 
+Une représentation 3D de notre PCB est visualisable sur les images ci-dessous, issues du logiciel Kicad : 
+
+![Capture8](https://user-images.githubusercontent.com/98756729/163666735-4f1563f3-0338-48c6-91cc-de7d47e3611a.JPG)![Capture9](https://user-images.githubusercontent.com/98756729/163666749-3001ceca-4579-4795-9974-90232d0164d8.JPG)
+
+
+
 Un schéma LTSpice du matériel est visible sur l'image ci-dessous, qui est fidèle au circuit tel que fabriqué sur le PCB. Par la suite cependant, nous introduirons plusieurs manières différentes de représenter notre _flex sensor_, notamment afin de tester l'impact du bruit :
 
 ![image](https://user-images.githubusercontent.com/98756729/163603875-e34973cb-3e47-418e-a51d-7911591c59d2.png)
