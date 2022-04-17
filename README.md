@@ -132,7 +132,14 @@ Une analyse sur Spice de l'offset existant imposé par l'amplifacteur LTC1050 pe
 
 ![Voffset_Capture](https://user-images.githubusercontent.com/98756729/163668570-4933808c-9583-4c84-95fb-2d2a5eb38e54.PNG)
 
-On remarque des tensions d'offset dépendant de la résistance variable Rvar. Ces tensions d'offset sont relativement importantes, de 100 à 200mV. Examinons, à Rvar constante, l'impact d'une variation de tension dV, à basse fréquence. 
+On remarque des tensions d'offset dépendant de la résistance variable Rvar. Ces tensions d'offset sont relativement importantes, de 100 à 200mV. Examinons, à Rvar constante, l'impact d'une variation de tension dV, à basse fréquence. On constate : 
+
+![image](https://user-images.githubusercontent.com/98756729/163715485-79b7af2a-337e-4e12-be21-7ae386998964.png)
+
+
+*Figure ci-dessus : Tension de sortie en entrée court-circuitée en fonction de la valeur de la résistance variable* 
+
+
 Soit :
 - Rsensor = (E.R1.(1+R3+R6)./(Vout.(R2+Rvar)))-R5-R1
 - E=5V
