@@ -152,7 +152,7 @@ Plusieurs dV sont possibles :
 - dV = 5/1023 V (pas de quantification) 
 - dV correspondant à l'offset, dépendant de Rvar 
 
-
+On constate une erreur d'offset très importante par rapport à l'erreur de quantification. On a également une variabilité importante de cet offset par rapport à la résistance du potentiomètre digital en mode rhéostat. En somme, si elle est négligeable pour l'utilisation du capteur dans une large plage de tensions, pour une meme résistance, le passage d'une résistance à une autre est à controler. 
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
