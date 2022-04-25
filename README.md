@@ -156,6 +156,12 @@ On constate une erreur d'offset très importante par rapport à l'erreur de quan
 
 # 3. Schématique et PCB KiCad <a class="anchor" id="Schem"></a>
 
+La réalisation du PCB a demandé plusieurs étapes de conception, allant de la schématique jusqu'à la soudure, en passant par le tracé des pistes sur la carte. Nous allons maintenant détailler le fruit de notre travail sur cette partie.
+
+## 3.1 Symboles, empreintes et schématique
+
+
+
 # 4. Code Arduino <a class="anchor" id="Code"></a>
 
 # 5. Application APK Bluetooth <a class="anchor" id="App"></a>
