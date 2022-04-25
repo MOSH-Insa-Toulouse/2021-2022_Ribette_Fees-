@@ -160,6 +160,30 @@ La réalisation du PCB a demandé plusieurs étapes de conception, allant de la 
 
 ## 3.1 Symboles, empreintes et schématique
 
+Voici les symboles et empreintes réalisés pour les différents éléments composant notre PCB :
+
+* Encodeur rotatoire
+
+* Ecran OLED
+
+* Module Bluetooth HC-05
+
+* Potentiomètre 
+
+* Amplificateur opérationnel LTC 1050
+
+Et voici la schématique complète de notre circuit :
+
+
+## 3.2 Réalisation des pistes et placement des composants
+
+C'est cette étape qui nous a demandé le plus de temps et d'attention. En effet, nous avons eu quelques difficultés à relier les PINS de manière satisfaisante et pour cela nous avons fait appel à deux vias.
+
+
+
+Visualisation 3D
+
+## 3.3 Fabrication du SHIELD
 
 
 # 4. Code Arduino <a class="anchor" id="Code"></a>
