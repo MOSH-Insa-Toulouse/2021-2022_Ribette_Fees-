@@ -221,6 +221,8 @@ Aussi, nous avons réalisé avoir inversé les PINS SDA et SCL de l'OLED sur l'A
 
 # 5. Application APK Bluetooth <a class="anchor" id="App"></a>
 
+Nous avons réalisé une application Android recevant les données de résistance de notre capteur via le module Bluetooth HC-05, qui affiche les données et trace le graphique de l'évolution de la résistance en fonction du temps. Pour cette dernière fonctionnalité, nous avons réalisé un mapping de la mesure dans le code Arduino.
+
 # 6. Banc de test <a class="anchor" id="Banc"></a>
 
 # 7. Datasheet <a class="anchor" id="Sheet"></a>
