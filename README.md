@@ -227,4 +227,4 @@ Nous avons réalisé une application Android recevant les données de résistanc
 
 # 7. Datasheet <a class="anchor" id="Sheet"></a>
 
-
+La datasheet précise les caractéristiques de notre capteur ainsi que son environnement et son utilisation.
