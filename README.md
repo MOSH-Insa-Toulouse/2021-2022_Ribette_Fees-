@@ -164,27 +164,58 @@ Voici les symboles et empreintes réalisés pour les différents éléments comp
 
 * Encodeur rotatoire
 
+![image](https://user-images.githubusercontent.com/98837571/165268137-7f9ab7d5-3c17-4ebd-8542-ec8b4e11c8b0.png)
+![image](https://user-images.githubusercontent.com/98837571/165269024-4a0505c3-1e3d-453a-8db1-2e5d67628108.png)
+
+
 * Ecran OLED
+
+![image](https://user-images.githubusercontent.com/98837571/165267939-e8e0c9ba-df2f-4c79-9d11-f493763f63e3.png)
+![image](https://user-images.githubusercontent.com/98837571/165269110-a40f5d81-976a-42b6-a3f9-845fed1024e8.png)
+
 
 * Module Bluetooth HC-05
 
+![image](https://user-images.githubusercontent.com/98837571/165268242-bbcf3e92-ebce-41e4-981c-e9a67c6d46bf.png)
+![image](https://user-images.githubusercontent.com/98837571/165269517-beef8d9d-3604-49fb-a9c1-d489c072345a.png)
+
+
 * Potentiomètre 
+
+![image](https://user-images.githubusercontent.com/98837571/165268038-6818a06d-c74a-46b9-8194-b3332b7e5815.png)
+![image](https://user-images.githubusercontent.com/98837571/165269395-d6ab532f-c13c-4dba-b70f-6eae3144ebfc.png)
+
 
 * Amplificateur opérationnel LTC 1050
 
-Et voici la schématique complète de notre circuit :
+![image](https://user-images.githubusercontent.com/98837571/165268374-0c4e93f3-1092-446f-b92b-47597407adc3.png)
+![image](https://user-images.githubusercontent.com/98837571/165269643-b6a660a1-44df-4bb8-aeb4-38eae84c1cc3.png)
+
+Et voici la schématique complète de notre circuit, ainsi que les correspondances entre les PINS des composants et de l'Arduino :
+
+![image](https://user-images.githubusercontent.com/98837571/165268542-d8a14658-2672-4300-8002-474ff12c105e.png)
+![image](https://user-images.githubusercontent.com/98837571/165268861-204d1e40-793f-42cd-b8a5-b923cac574f9.png)
 
 
 ## 3.2 Réalisation des pistes et placement des composants
 
 C'est cette étape qui nous a demandé le plus de temps et d'attention. En effet, nous avons eu quelques difficultés à relier les PINS de manière satisfaisante et pour cela nous avons fait appel à deux vias.
 
+![image](https://user-images.githubusercontent.com/98837571/165270097-96cd676b-efea-45f5-adde-c4f06a3fba9b.png)
 
+Nous avons fait appel à la visualisation 3D pour vérifier que les composants se plaçaient bien et n'entraient pas en conflit.
 
-Visualisation 3D
+![image](https://user-images.githubusercontent.com/98837571/165270822-01621169-a109-4a41-8d5e-267f5c6b9d21.png)
+![image](https://user-images.githubusercontent.com/98837571/165270975-5daf9c3a-f7b0-4674-9b6c-dee6233b2ea1.png)
+
+Malheureusement, nous n'avions pas prévu que l'encodeur rotatoire et le module Bluetooth soient placés sur des headers courbés, ce qui représentera un problème par la suite.
 
 ## 3.3 Fabrication du SHIELD
 
+Nous avons fabriqué notre PCB sur une plaque d'epoxy protégée par une couche fine de cuivre. Pour cela, nous avons imprimé notre PCB sur un calque pour qu'ensuite, à l'aide d'une insolation UV, l'empreinte soit reproduite sur notre plaque et jouant le rôle d'une résine protectrice. Puis, nous avons placé notre plaque dans une solution de perchlorure de fer. Ainsi, le cuivre non recouvert de résine est éliminé et nous obtenons notre PCB.
+Ensuite, nous avons percé (1mm pour les headers et connecteurs de l'Arduino et 8mm pour le reste) et soudé les éléments composant notre PCB.
+C'est à cette étape que nous nous sommes rendus compte du problème de l'encodeur et du module Bluetooth et avons donc coupé les pattes de l'encodeur pour le soûder dans l'autre sens, et ainsi avoir la place de le placer sur le PCB.
+Aussi, nous avons réalisé avoir inversé les PINS SDA et SCL de l'OLED sur l'Arduino et donc avons corrigé cela.
 
 # 4. Code Arduino <a class="anchor" id="Code"></a>
 
