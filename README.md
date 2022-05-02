@@ -21,6 +21,8 @@ Projet capteur INSA Toulouse 2021-2022
 Ce répertoire comporte les différentes étapes effectuées pour le projet de l'UF "Du capteur au banc de test en open source hardware" proposé en 4ème année de Génie Physique de l'INSA Toulouse. Ce travail a été effectué par Antoine Fées et Mathis Ribette, sous la direction de M. Jérémie Grisolia, et avec l'aide de M. Biganzoli et Mme Crouzet, de l'INSA Toulouse. 
 
 
+## 1.1 Prémices 
+
 Les prémices de ce travail viennent d'un article scientifique,  _Pencil Drawn Strain Gauges and Chemiresistors on Paper, by Cheng-Wei Lin, Zhibo Zhao, Jaemyung Kim & Jiaxing Huang, Nature, published on January 22, 2014_ [1](https://www.nature.com/articles/srep03812), dans lequel est fabriqué un capteur de déformation à base d'une feuille de papier et d'un crayon à papier, avec une mine en graphite.. Le système granulaire que composent les particules de graphite étalées sur une feuille de papier par un crayon se comporte d'une manière intéressante : lorsque le papier est courbé, les particules de graphite se rapprochent ou s'éloignent, induisant une diminution ou une augmentation de la résistivité globale du "circuit électrique" ainsi créé. 
 
 
@@ -30,6 +32,8 @@ Cette différence de composition chimique et donc de dureté, est mise en évide
 - A l'inverse, plus on se rapproche du 9B, plus la concentration en carbone augmente et plus celle des liants diminue.  
 ![image](https://user-images.githubusercontent.com/98756729/163597035-770cc0d2-381f-472a-9c6a-e3c83dd24306.png)
 _Image ci-dessus : figure 2 de l'article : (a) EDS spectra of pencil leads correlating hardness with the fraction of carbon. Intensities of all of the spectra were normalized based on the carbon peak. (b–g) Optical microscopy images of traces drawn on the paper substrates from pencils of decreasing hardness._[1](https://www.nature.com/articles/srep03812)
+
+## 1.2 Jauge de contrainte et graphite 
 
 L'équipe de chercheurs a par la suite utilisé ces différents crayons et tracé des jauges de contraintes en forme de U sur des feuilles de papier. Ces jauges présentent une longueur de trait d'environ quelques centimètres pour une largeur de trait de quelques millimètres, comme le montre la figure 3 (a) de l'article ci-dessous. 
 Le mécanisme de rapprochement ou d'éloignement des différents grains du système granulaire y est également représenté, (b-c-d).
@@ -55,6 +59,9 @@ Notons que l'article soutient que les résistances supérieures à 20 MOhms n'on
 
 Le circuit électronique que nous avons utilisé est un montage amplificateur à transimpédance, à amplificateur opérationnel. Afin de garantir une facilité d'utilisation, nous avons également ajouté un module Bluetooth qui nous permet, via une application réalisé avec le _MIT App Inventor_ de communiquer avec un téléphone portable android. Un potentiomètre digital commandé en SPI, monté en mode rhéostat à la place d'une résistance, nous permet de modifier le gain de l'amplificateur en temps réel. Nous avons également intégré un encodeur rotatoire, qui permet à l'utilisateur de faire des modifications en temps réel des actions du circuit, ainsi qu'un écran OLED qui affiche des informations utiles à l'utilisateur. Ce circuit électronique est monté sur PCB, puis monté sur un microcontroleur Arduino UNO. 
 
+## 2.1 Choix du matériel 
+
+
 Liste du matériel : 
 
 | Fonction     | Référence| 
@@ -62,10 +69,14 @@ Liste du matériel :
 | Microcontroleur | Arduino UNO |
 | Amplificateur opérationnel à faible bruit     | LTC 1050 | 
 | Module Bluetooth     | HC05    | 
-| Module encodeur rotatoire  | GT055     | 
+| Module encodeur rotatoire  | KY-040-GT055     | 
 | Potentiomètre digital | MCP41050 |
 | Résistances | 270k, 100k, 10k, 33 ohms ...|
 | Capacités | 100pF, 10uF ...|
+
+
+## 2.2 Schématisation du circuit électronique et modifications apportées
+
 
 Une représentation 3D de notre PCB est visualisable sur les images ci-dessous, issues du logiciel Kicad : 
 
@@ -99,6 +110,8 @@ Dans notre cas, la seule modification permanente est l'ajout d'un potentiomètre
 
 
 Une autre solution, plus couteuse, serait d'adjoindre un étage amplificateur inverseur à la suite d'un amplificateur transimpédance : nous n'aurions pas besoin de résistances élevées. 
+
+## 2.3 Test de la validité du modèle électrique 
 
 Testons notre formule pour le gain. En utilisant la formule **Vout = E(R1//C1)(1+((R3//C4)+R6)/(R2+Rvar))/(Rsens+R5+(R1//C1)** sur excel, on obtient : 
 
