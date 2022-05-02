@@ -232,6 +232,87 @@ Aussi, nous avons réalisé avoir inversé les PINS SDA et SCL de l'OLED sur l'A
 
 # 4. Code Arduino <a class="anchor" id="Code"></a>
 
+Dans cette partie, est détaillé le code Arduino utilisé pour mener à bien le projet. Le code est intégralement retranscrit, et également sous forme de logigramme. 
+
+## 4.1 Structure générale 
+
+La structure générale est comme suit : 
+- Une partie de déclaration de variables globales et de définitions
+- Une partie de Setup (code qui ne s'exécute qu'une fois) 
+- Une partie Loop qui s'exécute en boucle 
+
+![Logigramme1_base1](https://user-images.githubusercontent.com/98756729/166296630-03c59207-8961-495b-979e-fc7be83782bc.JPG)
+
+*figure ci-dessus : schéma récapitulatif de la structure du code Arduino* 
+
+Egalement, sont présents des fonctions supplémentaires (d'interruption par exemple). Nous y viendrons ultérieurement. 
+
+## 4.2 Déclaration de variables globales, définitions 
+
+La première partie est donc une partie de déclaration de variables, et de définitions qui seront utiles dans le Loop et dans le Setup. Nous appellons cette partie le PRE-SETUP. La structure de notre code est : 
+
+![Pre-setup 1](https://user-images.githubusercontent.com/98756729/166297008-03cd6105-e0be-44a9-9729-9b8cf22fc632.JPG)
+
+*figure ci-dessus : schéma récapitulatif de la structure de notre code PRE-SETUP. 
+*- Variables globales : Résistances, Pins ... 
+*- Définitions : libraires, fichiers à utiliser 
+
+![global1](https://user-images.githubusercontent.com/98756729/166297380-1b8b0fb4-7a7b-44ad-b9da-8dd3641ea5c1.JPG)
+![global2](https://user-images.githubusercontent.com/98756729/166297431-8906d342-7572-4e46-8909-c7eefad4c0a5.JPG)
+
+Les deux images ci-dessus rassemblent les éléments précédemment cités. Chaque utilité est brièvement rappelée en commentaire (//). 
+
+## 4.3 Setup 
+
+Le setup est organisé comme suit : 
+
+![init_setup](https://user-images.githubusercontent.com/98756729/166297663-87e8ab62-5ac7-4a35-90e6-84163a9e3018.JPG)
+
+Le code associé est le suivant : 
+
+![setup](https://user-images.githubusercontent.com/98756729/166297804-edf92ec7-173b-433e-9c22-54f0115b687b.JPG)
+
+
+## 4.4 Loop 
+
+La troisième partie du code est le loop, la partie du code qui re-boucle sans arret, et est juste arretée momentanément par les interruptions; ici la fonction d'interruption doEncoder utilisée pour l'encodeur rotatoire (en bleu sur le schéma ci-dessus). 
+
+Structure du loop : 
+
+![LOOP1](https://user-images.githubusercontent.com/98756729/166298055-89d58068-5231-445c-96c5-743bbe3875ba.JPG)
+
+### 4.4.1 Ajustement proportionnel du gain 
+
+La structure *void loop* commence avec l'ajustement proportionnel du gain de notre montage amplificateur pour obtenir une tension de 2,5 V en guise de Vout. Cette adaptation nous permet de rester dans une plage d'utilisation convenable. Elle fonctionne en augmentant ou diminuant la valeur de consigne (entre 0 et 255) donnée au potentiomètre digital et donc respectivement diminuer ou augmenter la résistance, respectivement diminuant ou augmentant le gain du montage.
+Bien évidemment, nous avons fait en sorte que la valeur de consigne envoyée au potentiomètre digital reste entre 0 et 255 compris; pour ne pas poser de problèmes. 
+Enfin, la résistance actuelle de R2, ajustée, nous permet de calculer la véritable valeur de résistance du capteur Rs. Avec cette méthode, nous avons une valeur qui se stabilise rapidement autour de la valeur réelle de résistance souhaitée tout en s'assurant que la tension à l'entrée du convertisseur analogique numérique de l'arduino reste autour de 2,5V. 
+
+Afin d'augmenter la vitesse de réponse, nous avons implémenté une correction proportionnelle de la position du wiper de l'encodeur rotatoire. dV, la différence de tension entre les 2,5V de consigne (Vconsigne) et la tension effectivement mesurée analgoRead(PotPin) (Vmesuré), est multipliée par un coefficient (5,0), puis convertie en entier et c'est de cette valeur qu'est augmentée ou diminuée la position du wiper. En somme, au lieu de faire un déplacement incrémental unique de la position du wiper, ou meme de faire un déplacement important mais toujours constant de la position du wiper, le système adapte le déplacement à la valeur souhaitée, résultant en un système beaucoup plus rapide. 
+
+Ci-dessous un schéma qui récapitule le fonctionnement de notre code : 
+
+![Correcteur_proportionnel3](https://user-images.githubusercontent.com/98756729/166300129-c969759f-2301-4791-812c-047fc608ed6a.JPG)
+
+
+Le code associé est : 
+
+![Pot_digital](https://user-images.githubusercontent.com/98756729/166300240-790ebc7e-f078-4ba2-b447-f92cda32e4dd.JPG)
+![Pot_digital_2](https://user-images.githubusercontent.com/98756729/166300264-a9d68a02-a464-4b29-86ef-961a14c89b78.JPG)
+
+### 4.4.2 Lecture de la valeur de tension 
+
+Afin que la boucle correctrice fonctionne, et que la valeur de résistance lue puisse varier, on vient lire à chaque tour de boucle la tension en sortie du montage amplificateur, puis transformer cette valeure en valeur de résistance (avec la formule du gain précedemment énoncée). Le code est : 
+
+![Capteur](https://user-images.githubusercontent.com/98756729/166300600-7b715cd6-8417-440d-9b4e-0abf7a19dbe8.JPG)
+
+La valeur de R2 varie à chaque tour de boucle en raison de l'action stabilisatrice de la résistance du potentiomètre digital, et la valeur de Vadc varie à chaque tour en conséquence (et une mesure est effectuée à chaque tour). La valeur de Rs se stabilise donc autour de la valeur vraie. 
+
+
+
+
+
+
+
 # 5. Application APK Bluetooth <a class="anchor" id="App"></a>
 
 Nous avons réalisé une application Android recevant les données de résistance de notre capteur via le module Bluetooth HC-05, qui affiche les données et trace le graphique de l'évolution de la résistance en fonction du temps. Pour cette dernière fonctionnalité, nous avons réalisé un mapping de la mesure dans le code Arduino.
