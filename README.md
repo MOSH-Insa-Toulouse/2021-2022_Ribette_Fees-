@@ -307,11 +307,54 @@ Afin que la boucle correctrice fonctionne, et que la valeur de résistance lue p
 
 La valeur de R2 varie à chaque tour de boucle en raison de l'action stabilisatrice de la résistance du potentiomètre digital, et la valeur de Vadc varie à chaque tour en conséquence (et une mesure est effectuée à chaque tour). La valeur de Rs se stabilise donc autour de la valeur vraie. 
 
+### 4.4.3 Interruption de la boucle LOOP & debouncing associé : encodeur rotatoire 
+
+Une interruption de la boucle loop est effectuée lorsqu'un changement de la valeur de l'encodeur rotatoire est détecté sur le pin d'interruption du microcontroleur. Cette interruption est agrémentée d'un *debouncing*, c'est-à-dire que les variations lues par le microcontroleur ne sont prises en compte que si elles sont suffisamment espacées les unes des autres. 
+
+Ici, la fonction d'interruption lit un temps, regarde si ce temps est assez éloigné du temps de la dernière interruption (>150ms). Si c'est le cas, la fonction remplit sa mission (elle change la valeur du Scale pour l'envoi de la donnée vers le module Bluetooth et l'application APK). Si ce n'est pas le cas, la fonction ne fait rien et le programme repart dans la boucle LOOP, mettant fin *de facto* à l'interruption. Cette fin d'interruption s'accompagne d'une mesure du temps, afin de mettre à jour la date de la dernière interruption qui sert à la comparaison. Le système de debouncing ainsi crée permet de se débarrasser des changements intempestifs lus par le pin arduino dus au bruit. Ce système est réglé par défaut à 150 ms de temps, mais il serait possible de changer cette valeur. 
+
+Ci-dessous un schéma récapitulatif de cette fonction : 
+
+![Debouncing_encodeur2](https://user-images.githubusercontent.com/98756729/166455194-024f46fb-dd9d-4ae2-8a8e-654f4721295d.JPG)
 
 
+Et le code associé :
+
+![interruption_encodeur_rotatoire](https://user-images.githubusercontent.com/98756729/166455261-50fd4e6d-9e38-4aab-88dd-b78a2460731c.JPG)
 
 
+Comme vous pouvez le voir, cette fonction d'interruption change la valeur de la variable *Scale* qui permet de faire un *mapping* de la valeur de résistance envoyée à l'application APK vie Bluetooth (c'est à dire de choisir de contraintre l'envoi de la donnée dans certaines limites, changeant ainsi le "zoom" de la donnée autour d'une valeur particulière, ici définie à 5 MOhm). 
 
+### 4.4.4 Mapping de la donnée et envoi à l'application Bluetooth
+
+Dans le code suivant, la donnée, comprise entre 0 et 10 000 (unité kOhm), est envoyée en la centrant autour de 5 000 (kOhm) en fonction de la valeur du Scale, via la fonction constrain(), vers un entier compris entre 0 et 127. 
+
+- Si la résistance varie beaucoup, l'utilisateur peut choisir de placer la variable Scale à 1 (en tournant l'encodeur rotatoire dans le sens horaire pour augmenter la valeur de scale, antihoraire pour la diminuer) et ainsi profiter d'une plage allant de 0 à 10 000 (kOhm). 
+- Si la variation est plus faible au contraire, la valeur de résistance est contrainte dans un intervalle plus faible (entre 4000 et 6000 kOhm si Scale est à 5 par exemple). 
+
+La valeur ainsi obtenue est donc plus ou moins zoomée sur l'application APK : la valeur envoyée est toujours comprise entre 0 et 127 (conformément aux egigences de l'application) mais les limites inférieure et supérieures correspondent à des résistances plus ou moins espacées (d'une plage de 10MOhm à 1Mohm). 
+
+Le code qui y est associé est : 
+
+![mapping1](https://user-images.githubusercontent.com/98756729/166456840-aea65dc8-c5c9-467e-8447-5de581c26881.JPG)
+
+
+La valeur de la variable scale ainsi choisie permet donc de contraindre la donnée et de l'envoyer sous un format utilisable par l'application, avec le code suivant : 
+
+![mapping2](https://user-images.githubusercontent.com/98756729/166457220-01c535e4-074e-46f8-bdc0-c3c96befc13c.JPG)
+
+### 4.4.5 Affichage sur l'écran OLED des informations 
+
+Ensuite, on affiche les différentes valeurs utiles sur l'écran OLED :
+- la résistance, convertie en kOhm, 
+- la valeur de position du wiper du potentiomètre digital, comprise entre 0 et 255 
+- la valeur de la variable *scale* et donc le zoom effectif de l'affichage sur l'application APK
+
+Le code est :
+
+![OLED_et_affichage](https://user-images.githubusercontent.com/98756729/166457439-8e8077ab-a244-48f8-99f7-964f53f1c0a6.JPG)
+
+Enfin, un délai de 300 ms entre deux tours de boucle LOOP est pris. 
 
 # 5. Application APK Bluetooth <a class="anchor" id="App"></a>
 
