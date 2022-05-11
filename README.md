@@ -362,6 +362,25 @@ Nous avons réalisé une application Android recevant les données de résistanc
 
 # 6. Banc de test <a class="anchor" id="Banc"></a>
 
+Pour tester notre capteur et réaliser sa datasheet, nous avons réfléchi à plusieurs protocoles. Cependant, seulement un nous a permis d'obtenir des résultats cohérents. 
+Nous avons fabriqué différents capteurs avec des sections différentes à l'aide d'un crayon HB comme ceci :
+
+![image](https://user-images.githubusercontent.com/98837571/167938092-dc75c850-b9b5-4d76-a986-0ff609e11e5e.png)
+
+Ensuite, nous avons inséré notre capteur dans des cercles en papier avec des rayons différents, pour que notre capteur subisse des compressions avec des rayons de courbure différents : 
+
+![image](https://user-images.githubusercontent.com/98837571/167939365-55915d58-dc30-4b7c-b914-f7dc06e29bee.png)
+
+![image](https://user-images.githubusercontent.com/98837571/167939484-44f70075-1438-4bac-8c04-3848f7cdd517.png)
+
+Nous avons ainsi pu effectuer plusieurs mesures de résistance en fonction du rayon de courbure et tracer son évolution en fonction du rayon : 
+
+![image](https://user-images.githubusercontent.com/98837571/167940541-c9a5ea9f-ed73-4253-a889-6c343bf08a3a.png)
+
+On observe bien que l'écart relatif de la résistance diminue avec l'augmentation du rayon de courbure, et donc que plus le capteur est comprimé, plus la résistance est faible.
+Nous avons aussi réalisé des capteurs avec un crayon 2H, mais nous n'avons pas obtenu de résultats cohérents, les résistances à mesurer étant bien plus supérieures à la plage de mesure de notre capteur (1 - 10 Mohm).
+
+
 # 7. Datasheet <a class="anchor" id="Sheet"></a>
 
 La datasheet précise les caractéristiques de notre capteur ainsi que son environnement et son utilisation.
